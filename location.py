@@ -12,5 +12,3 @@ class Location:
 
     def get_commune_name(self):
         return '{}'.format(self.type_name)
-
-

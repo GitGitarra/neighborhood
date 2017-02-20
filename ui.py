@@ -1,11 +1,10 @@
-from location import *
 from locations_list import *
 from prettytable import PrettyTable
 import os
 
 
 def print_menu():
-    # clear()
+    clear()
     print('''
     What would you like to do:
 
@@ -24,6 +23,7 @@ def display_statistic():
 
     stat.field_names = ['MAŁOPOLSKA', '']
     rows = Locations.get_statistic()
+    print(rows)
     for item in rows:
         stat.add_row(item)
     stat.align['MAŁOPOLSKA'] = "l"
@@ -44,6 +44,14 @@ def display_county_name():
     name = Locations.largest_numb_of_communities()
     print('The name of the county with the largest number of communities is: {}'.format(name))
 
+
+def dispaly_meny_categories_locations():
+    print('\nLocations with many categories:')
+    result = Locations.many_categories()
+    for item in result:
+        print(item)
+
+
 def dispaly_searching():
     result = PrettyTable()
     result.field_names = ['LOCATION', 'TYPE']
@@ -53,6 +61,7 @@ def dispaly_searching():
         result.add_row(row)
     result.align = 'l'
     print(result)
+
 
 def get_user_input(title):
     answer = input(title)
